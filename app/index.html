@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PALM RIOT — Cover Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <aside class="controls">
+    <header class="brand">
+      <h1>PALM RIOT</h1>
+      <p class="tagline">Cover Studio — your photos, poster-sized. Everything happens on your machine; nothing is uploaded.</p>
+    </header>
+
+    <section>
+      <h2>1 · Photos</h2>
+      <div id="tray" class="tray" aria-label="Photo tray"></div>
+      <label class="upload">Add your photos
+        <input id="upload" type="file" accept="image/*" multiple>
+      </label>
+      <p class="hint">Click a panel on the cover, then a photo to fill it — or switch to One photo, spanned.</p>
+    </section>
+
+    <section>
+      <h2>2 · Panels</h2>
+      <label>Layout
+        <select id="layout">
+          <option value="popout">Pop-Out Hero</option>
+          <option value="slant">Slanted Strips</option>
+          <option value="hero">Hero Strip</option>
+          <option value="grid">Comic Grid</option>
+          <option value="skyline">Skyline Split</option>
+          <option value="mosaic">Mosaic</option>
+        </select>
+      </label>
+      <label>Fill mode
+        <select id="mode">
+          <option value="panels">A photo per panel</option>
+          <option value="span">One photo, spanned</option>
+        </select>
+      </label>
+    </section>
+
+    <section>
+      <h2>3 · Grade &amp; finish</h2>
+      <label>Colour grade
+        <select id="grade">
+          <option value="vice">Vice Sunset</option>
+          <option value="heatwave">Heatwave Dusk</option>
+          <option value="neon">Neon Nights</option>
+          <option value="golden">Golden Hour</option>
+          <option value="teal">Midnight Teal</option>
+          <option value="ink">Poster Ink</option>
+        </select>
+      </label>
+      <div class="checks">
+        <label><input id="opt-glow" type="checkbox" checked> Sky glow</label>
+        <label><input id="opt-grain" type="checkbox" checked> Film grain</label>
+        <label><input id="opt-halftone" type="checkbox"> Halftone print</label>
+      </div>
+    </section>
+
+    <section>
+      <h2>4 · Title over the art</h2>
+      <label>Title <input id="title" type="text" maxlength="26" value="SUNSET HEIST"></label>
+      <label>Kicker line <input id="kicker" type="text" maxlength="44" value="ONE CREW · ONE SCORE · NO BRAKES"></label>
+      <div class="row">
+        <label>Place
+          <select id="title-pos">
+            <option value="top">Over the top</option>
+            <option value="bottom">Over the bottom</option>
+          </select>
+        </label>
+        <label>Fill
+          <select id="title-fill">
+            <option value="sunset">Sunset gradient</option>
+            <option value="chrome">Chrome</option>
+            <option value="neon">Neon pink</option>
+            <option value="bone">Bone white</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section>
+      <h2>5 · Selected panel</h2>
+      <p id="panel-name" class="hint">Panel 1 of 5</p>
+      <label>Zoom <input id="zoom" type="range" min="100" max="320" value="100"></label>
+      <div class="checks">
+        <label><input id="smart" type="checkbox"> Smart crop (face-biased)</label>
+        <label><input id="pop" type="checkbox"> Pop this panel out</label>
+      </div>
+      <label>Cast tag <input id="cast" type="text" maxlength="24" placeholder="e.g. RAY SOLANO"></label>
+      <p class="hint">Drag on the cover to pan the photo inside its panel.</p>
+    </section>
+
+    <section>
+      <h2>6 · Callout stickers</h2>
+      <div id="callouts" class="callouts"></div>
+      <button id="add-callout" type="button">Add callout</button>
+    </section>
+
+    <section>
+      <h2>7 · Poster furniture</h2>
+      <div class="checks">
+        <label><input id="opt-seal" type="checkbox" checked> Studio seal</label>
+        <label><input id="opt-billing" type="checkbox" checked> Billing block</label>
+        <label><input id="opt-rating" type="checkbox" checked> Rating box</label>
+        <label><input id="opt-barcode" type="checkbox" checked> Barcode</label>
+        <label><input id="opt-casttags" type="checkbox" checked> Cast tags</label>
+      </div>
+    </section>
+
+    <section>
+      <h2>8 · Export PNG</h2>
+      <div class="exports">
+        <button id="exp-square" type="button">1080 × 1080</button>
+        <button id="exp-portrait" type="button">1080 × 1350</button>
+        <button id="exp-wide" type="button">1920 × 1080</button>
+      </div>
+      <p id="status" role="status"></p>
+    </section>
+  </aside>
+
+  <section class="stage">
+    <canvas id="cover" width="1080" height="1080" aria-label="Your cover, live preview"></canvas>
+    <p class="stage-hint">Live preview — drag a panel to pan its photo · scroll over a panel to zoom it</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

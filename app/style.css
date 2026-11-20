@@ -1,0 +1,186 @@
+@font-face {
+  font-family: "Anton";
+  src: url("./fonts/Anton-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: #14101d;
+  color: #f3ead9;
+  font: 14px/1.45 "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.app {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+/* ---------- control column ---------- */
+
+.controls {
+  width: 348px;
+  flex: 0 0 348px;
+  padding: 18px 18px 26px;
+  background: linear-gradient(180deg, #1d1530 0%, #171126 60%, #120d20 100%);
+  border-right: 3px solid #ff7847;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.brand h1 {
+  font-family: "Anton", sans-serif;
+  font-size: 44px;
+  letter-spacing: 2px;
+  margin: 0;
+  background: linear-gradient(92deg, #ffd23e 5%, #ff7847 45%, #ff3d7e 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline { margin: 4px 0 6px; color: #cbbfa8; font-size: 12.5px; }
+
+.controls section {
+  border-top: 1px solid #3a2d55;
+  padding: 12px 0 14px;
+}
+
+.controls h2 {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  color: #ffb35c;
+  margin: 0 0 9px;
+  text-transform: uppercase;
+}
+
+.controls label {
+  display: block;
+  margin: 7px 0;
+  color: #e8dcc4;
+  font-size: 13px;
+}
+
+.controls input[type="text"],
+.controls select {
+  width: 100%;
+  margin-top: 3px;
+  padding: 7px 9px;
+  border: 1px solid #57467c;
+  border-radius: 6px;
+  background: #241a3d;
+  color: #fff7e8;
+  font: inherit;
+}
+
+.controls input[type="range"] { width: 100%; accent-color: #ff7847; }
+
+.row { display: flex; gap: 10px; }
+.row label { flex: 1; }
+
+.checks { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 6px 0; }
+.checks label { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+.checks input { accent-color: #ff3d7e; }
+
+.hint { color: #a8977a; font-size: 12px; margin: 6px 0; }
+
+button {
+  font: inherit;
+  font-weight: 600;
+  color: #1c1030;
+  background: linear-gradient(180deg, #ffd23e, #ff9a3e);
+  border: 0;
+  border-radius: 7px;
+  padding: 8px 13px;
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.08); }
+
+.upload {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 13px;
+  border: 1.5px dashed #ff7847;
+  border-radius: 7px;
+  color: #ffb35c;
+  cursor: pointer;
+  font-weight: 600;
+}
+.upload input { display: none; }
+
+.tray { display: flex; flex-wrap: wrap; gap: 8px; }
+.tray figure {
+  margin: 0;
+  width: 68px;
+  cursor: pointer;
+  text-align: center;
+}
+.tray img {
+  width: 68px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 2px solid #57467c;
+  display: block;
+}
+.tray figure.active img { border-color: #ffd23e; }
+.tray figcaption { font-size: 10.5px; color: #cbbfa8; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.callouts { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+.callout-row { display: flex; gap: 6px; align-items: center; }
+.callout-row input[type="text"] { flex: 1; }
+.callout-row select { width: 92px; }
+.callout-row button { padding: 6px 9px; background: #3a2d55; color: #f3ead9; }
+
+.exports { display: flex; flex-wrap: wrap; gap: 8px; }
+#status { color: #8be08b; min-height: 18px; margin: 8px 0 0; font-size: 12.5px; }
+
+/* ---------- stage ---------- */
+
+.stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 22px;
+  background:
+    radial-gradient(900px 480px at 70% 18%, rgba(255, 61, 126, 0.16), transparent 60%),
+    radial-gradient(700px 500px at 25% 85%, rgba(255, 150, 62, 0.13), transparent 60%),
+    #14101d;
+}
+
+#cover {
+  max-width: min(100%, calc(100vh - 90px));
+  max-height: calc(100vh - 90px);
+  width: auto;
+  height: auto;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  cursor: grab;
+  touch-action: none;
+}
+#cover:active { cursor: grabbing; }
+
+.stage-hint { color: #8d7d63; font-size: 12.5px; margin: 0; }
+
+/* ---------- screenshot modes ---------- */
+
+body.shot-cover { background: #000; }
+body.shot-cover .controls,
+body.shot-cover .stage-hint { display: none; }
+body.shot-cover .app { min-height: 0; }
+body.shot-cover .stage { padding: 0; }
+body.shot-cover #cover {
+  max-width: none;
+  max-height: none;
+  width: 100vw;
+  height: 100vh;
+  box-shadow: none;
+}
